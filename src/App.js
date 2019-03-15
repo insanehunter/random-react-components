@@ -1,12 +1,17 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Test from './components/Test'
-import AppHeader from './components/AppHeader'
 import { AppStateProvider } from './context/AppState'
+import AppHeaderContainer from './containers/AppHeaderContainer'
 
 const App = () => (
   <AppStateProvider>
-    <AppHeader />
-    <Test />
+    <Router>
+      <React.Fragment>
+        <AppHeaderContainer />
+        <Test />
+      </React.Fragment>
+    </Router>
   </AppStateProvider>
 )
 

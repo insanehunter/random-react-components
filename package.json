@@ -6,6 +6,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
     "styled-components": "^4.1.3"
   },
@@ -28,14 +29,21 @@
       "react-app"
     ],
     "rules": {
-      "arrow-parens": ["error", "as-needed", {
-        "requireForBlockBody": true
-      }],
-      "space-before-function-paren": ["error", {
-        "named": "never",
-        "anonymous": "never",
-        "asyncArrow": "always"
-      }]
+      "arrow-parens": [
+        "error",
+        "as-needed",
+        {
+          "requireForBlockBody": true
+        }
+      ],
+      "space-before-function-paren": [
+        "error",
+        {
+          "named": "never",
+          "anonymous": "never",
+          "asyncArrow": "always"
+        }
+      ]
     }
   },
   "browserslist": [
