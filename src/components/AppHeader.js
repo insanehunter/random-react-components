@@ -28,7 +28,8 @@ const PageHeader = () => {
 
   function renderBackButton() {
     const hasHistory = !!visitedPages.length
-    const backButtonText = hasHistory && visitedPages[visitedPages.length - 1]
+    const defaultBackButtonText = 'Back'
+    const backButtonText = hasHistory && (visitedPages[visitedPages.length - 1] || defaultBackButtonText)
     return hasHistory && <BackButton handleClick={history.goBack} className='back-button'>{backButtonText}</BackButton>
   }
 
