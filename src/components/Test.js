@@ -1,9 +1,17 @@
-import React, { useContext } from 'react'
-import AppStateContext, { SET_TITLE } from '../context/AppStateContext'
+import React from 'react'
+import Toggle from './Toggle'
 
 const Test = () => {
-  const { dispatch } = useContext(AppStateContext)
-  return <button onClick={() => dispatch({ type: SET_TITLE, payload: 'hui' })}>change title</button>
+  return (
+    <Toggle>
+      {({ isOpen, toggle }) => (
+        <div>
+          <button onClick={toggle}>Open</button>
+          {isOpen && <h2>Hui</h2>}
+        </div>
+      )}
+    </Toggle>
+  )
 }
 
 export default Test
