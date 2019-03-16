@@ -7,7 +7,7 @@ const useHistory = (handleChange) => {
   useEffect(() => {
     if (!handleChange) return
     unlistenRef.current = history.listen(() => handleChange(history))
-    return () => setTimeout(unlistenRef.current)
+    return () => unlistenRef.current()
   }, [])
 
   return history
