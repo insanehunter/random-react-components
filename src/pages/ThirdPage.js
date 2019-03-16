@@ -5,7 +5,7 @@ import useInitialData from '../hooks/useInitialData'
 
 const ThirdPage = () => {
   useTitle('Third')
-  const [data, , reload] = useInitialData('https://api.weather.gov/points/39.7456,-97.0892')
+  const [data, , reload] = useInitialData('https://api.weather.gov/gridpoints/TOP/31,80')
 
   return (
     <div>
