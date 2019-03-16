@@ -5,7 +5,7 @@ import useHistory from '../hooks/useHistory'
 import AppStateContext, { PUSH_TITLE_TO_HISTORY, POP_LAST_SAVED_TITLE } from '../context/AppStateContext'
 
 const PageHeader = () => {
-  const history = useHistory(onHistoryChange)
+  const history = useHistory(handleHistoryChange)
   const { title, visitedPages, leftHeaderButtons, rightHeaderButtons, dispatch } = useContext(AppStateContext)
 
   return (
@@ -21,7 +21,7 @@ const PageHeader = () => {
     </StyledHeader>
   )
 
-  function onHistoryChange({ action }) {
+  function handleHistoryChange({ action }) {
     if (action === 'PUSH') dispatch({ type: PUSH_TITLE_TO_HISTORY })
     else if (action === 'POP') dispatch({ type: POP_LAST_SAVED_TITLE })
   }

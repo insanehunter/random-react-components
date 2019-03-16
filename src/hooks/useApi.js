@@ -7,6 +7,7 @@ const useApi = (path, params = {}, method = 'GET') => {
   const [loading, setLoadingStatus] = useState(false)
 
   function request() {
+    clearState()
     setLoadingStatus(true)
     fetchData(path, params, method)
       .then(parsedData => setData(parsedData))
@@ -14,12 +15,12 @@ const useApi = (path, params = {}, method = 'GET') => {
       .finally(() => setLoadingStatus(false))
   }
 
-  function reload() {
+  function clearState() {
     if (data) setData(null)
     if (error) setError(null)
   }
 
-  return [request, data, error, loading, reload]
+  return [request, data, error, loading]
 }
 
 export default useApi

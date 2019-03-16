@@ -2,14 +2,13 @@ import { useEffect } from 'react'
 import useApi from './useApi'
 
 const useInitialData = (apiPath, params = {}) => {
-  const [request, data, error, , reload] = useApi(apiPath, params)
+  const [request, data, error] = useApi(apiPath, params)
 
   useEffect(() => {
-    if (data || error) return
     request()
-  }, [data, error])
+  }, [])
 
-  return [data, error, reload]
+  return [data, error, request]
 }
 
 export default useInitialData

@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 import history from '../history'
 
-const useHistory = (onChangeHandler) => {
+const useHistory = (handleChange) => {
   const unlistenRef = useRef()
 
   useEffect(() => {
-    if (!onChangeHandler) return
-    unlistenRef.current = history.listen(() => onChangeHandler(history))
+    if (!handleChange) return
+    unlistenRef.current = history.listen(() => handleChange(history))
     return () => setTimeout(unlistenRef.current)
   }, [])
 
