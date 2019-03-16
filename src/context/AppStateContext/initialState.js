@@ -1,7 +1,6 @@
 export default {
   title: '',
-  backButtonText: '',
-  backButtonHistory: [],
+  visitedPages: [],
   leftHeaderButtons: [],
   rightHeaderButtons: []
 }

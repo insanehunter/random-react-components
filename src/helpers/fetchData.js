@@ -30,7 +30,7 @@ function serializeParamsToQueryString(params) {
     return result
   }, '')
 
-  return '?' + queryString.slice(0, -1)
+  return queryString.length ? ('?' + queryString.slice(0, -1)) : ''
 }
 
 export default fetchData

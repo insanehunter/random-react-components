@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import fetchData from '../helpers/fetchData'
 
-const useApi = (path, params, method) => {
+const useApi = (path, params = {}, method = 'GET') => {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoadingStatus] = useState(false)
 
-  function sendRequest() {
+  function request() {
     setLoadingStatus(true)
     fetchData(path, params, method)
       .then(parsedData => setData(parsedData))
@@ -19,7 +19,7 @@ const useApi = (path, params, method) => {
     if (error) setError(null)
   }
 
-  return [sendRequest, data, error, loading, reload]
+  return [request, data, error, loading, reload]
 }
 
 export default useApi

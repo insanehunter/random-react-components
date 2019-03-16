@@ -1,15 +1,24 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Test from './components/Test'
-import { AppStateProvider } from './context/AppState'
-import AppHeaderContainer from './containers/AppHeaderContainer'
+import { Router, Switch, Route } from 'react-router-dom'
+import { AppStateProvider } from './context/AppStateContext'
+import AppHeader from './components/AppHeader'
+
+import MainPage from './pages/MainPage'
+import SecondPage from './pages/SecondPage'
+import ThirdPage from './pages/ThirdPage'
+
+import history from './history'
 
 const App = () => (
   <AppStateProvider>
-    <Router>
+    <Router history={history}>
       <React.Fragment>
-        <AppHeaderContainer />
-        <Test />
+        <AppHeader />
+        <Switch>
+          <Route path='/' exact component={MainPage} />
+          <Route path='/second' component={SecondPage} />
+          <Route path='/third' component={ThirdPage} />
+        </Switch>
       </React.Fragment>
     </Router>
   </AppStateProvider>

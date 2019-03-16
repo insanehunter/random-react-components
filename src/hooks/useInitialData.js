@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import useApi from './useApi'
 
 const useInitialData = (apiPath, params = {}) => {
-  const [sendRequest, data, error, , reload] = useApi(apiPath, params)
+  const [request, data, error, , reload] = useApi(apiPath, params)
 
   useEffect(() => {
     if (data || error) return
-    sendRequest()
+    request()
   }, [data, error])
 
   return [data, error, reload]

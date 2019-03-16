@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import AppStateContext, { SET_TITLE } from '../context/AppState'
+import AppStateContext, { SET_TITLE } from '../context/AppStateContext'
 
 const Test = () => {
   const { dispatch } = useContext(AppStateContext)
