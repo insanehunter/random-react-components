@@ -2,12 +2,13 @@ import LocalizedStrings from 'react-localization'
 import en from './en'
 import ru from './ru'
 
-class MemoizedLocalizedStrings extends LocalizedStrings {
-  storageKey = 'language'
+import getStorageDriver from '../../helpers/getStorageDriver'
 
+class MemoizedLocalizedStrings extends LocalizedStrings {
   constructor(strings) {
     super(strings)
-    this._restore()
+    this._storage = getStorageDriver('language')
+    this.language = this._storage.value
   }
 
   get availableLanguages() {
@@ -31,15 +32,7 @@ class MemoizedLocalizedStrings extends LocalizedStrings {
     const availableLanguages = super.getAvailableLanguages()
     const language = availableLanguages.includes(preferredLanguage) ? preferredLanguage : deviceLanguage
     super.setLanguage(language)
-    this._save(language)
-  }
-
-  _restore() {
-    this.language = localStorage.getItem(this.storageKey)
-  }
-
-  _save(selectedLanguage) {
-    localStorage.setItem(this.storageKey, selectedLanguage)
+    this._storage.save(language)
   }
 }
 

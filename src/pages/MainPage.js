@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import useTitle from '../hooks/useTitle'
 import Modal from '../components/Modal'
 import Toggle from '../components/Toggle'
 import Localizer from '../components/Localizer'
+import ThemeSwitcher from '../components/ThemeSwitcher'
 import LocalizationSwitcher from '../components/LocalizationSwitcher'
 
 const MainPage = () => {
@@ -11,8 +13,12 @@ const MainPage = () => {
 
   return (
     <div>
-      <h2><Localizer stringPath='appHeader.defaultBackButtonText' /></h2>
+      <StyledTitle>
+        <Localizer stringPath='appHeader.defaultBackButtonText' />
+      </StyledTitle>
+
       <Link to='/second'>Next</Link>
+
       <Toggle>
         {({ isOpen, toggle }) => (
           <div>
@@ -22,8 +28,13 @@ const MainPage = () => {
         )}
       </Toggle>
       <LocalizationSwitcher />
+      <ThemeSwitcher />
     </div>
   )
 }
+
+const StyledTitle = styled.h1`
+  color: ${props => props.theme.fontColor};
+`
 
 export default MainPage

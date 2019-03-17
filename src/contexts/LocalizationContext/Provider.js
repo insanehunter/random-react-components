@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import LocalizationContext from './Context'
 import l10n from '../../services/localization'
 import getObjectValueAtPath from '../../helpers/getObjectValueAtPath'
@@ -21,6 +22,10 @@ const LocalizationProvider = ({ children }) => {
       {children}
     </LocalizationContext.Provider>
   )
+}
+
+LocalizationProvider.propTypes = {
+  children: PropTypes.node
 }
 
 export default LocalizationProvider

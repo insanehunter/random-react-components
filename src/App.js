@@ -2,6 +2,7 @@ import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 
 import { AppStateProvider } from './contexts/AppStateContext'
+import { DynamicThemeProvider } from './contexts/ThemeContext'
 import { LocalizationProvider } from './contexts/LocalizationContext'
 
 import AppHeader from './components/AppHeader'
@@ -26,11 +27,13 @@ const App = () => (
 const CompositedProviders = ({ children }) => (
   <AppStateProvider>
     <LocalizationProvider>
-      <Router history={history}>
-        <React.Fragment>
-          {children}
-        </React.Fragment>
-      </Router>
+      <DynamicThemeProvider>
+        <Router history={history}>
+          <React.Fragment>
+            {children}
+          </React.Fragment>
+        </Router>
+      </DynamicThemeProvider>
     </LocalizationProvider>
   </AppStateProvider>
 )

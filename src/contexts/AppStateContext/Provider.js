@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react'
-import initialState from './initialState'
-import AppStateContext from './Context'
+import PropTypes from 'prop-types'
 import reducer from './reducer'
+import AppStateContext from './Context'
+import initialState from './initialState'
 
 const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -11,6 +12,10 @@ const AppStateProvider = ({ children }) => {
       {children}
     </AppStateContext.Provider>
   )
+}
+
+AppStateProvider.propTypes = {
+  children: PropTypes.node
 }
 
 export default AppStateProvider
