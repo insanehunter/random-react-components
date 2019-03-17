@@ -10,7 +10,7 @@ const DynamicThemeProvider = ({ children }) => {
 
   const toggleTheme = () => {
     const nextTheme = selectedTheme === 'light' ? 'dark' : 'light'
-    storage.save(nextTheme)
+    storage.value = nextTheme
     setTheme(nextTheme)
   }
 

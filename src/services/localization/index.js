@@ -31,8 +31,8 @@ class MemoizedLocalizedStrings extends LocalizedStrings {
     const deviceLanguage = super.getInterfaceLanguage()
     const availableLanguages = super.getAvailableLanguages()
     const language = availableLanguages.includes(preferredLanguage) ? preferredLanguage : deviceLanguage
+    this._storage.value = language
     super.setLanguage(language)
-    this._storage.save(language)
   }
 }
 

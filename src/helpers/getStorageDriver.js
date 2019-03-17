@@ -3,7 +3,7 @@ function getStorageDriver(storageKey) {
     get value() {
       return localStorage.getItem(storageKey)
     },
-    save(newValue) {
+    set value(newValue) {
       localStorage.setItem(storageKey, newValue)
     }
   }
