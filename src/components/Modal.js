@@ -1,15 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Portal from './Portal'
 
 const Modal = ({ children, close }) => (
   <Portal>
-    <ModalWrapper>
+    <StyledModal>
       {children}
-    </ModalWrapper>
+    </StyledModal>
   </Portal>
 )
 
-const ModalWrapper = styled.div``
+Modal.propTypes = {
+  children: PropTypes.node,
+  close: PropTypes.func
+}
+
+const StyledModal = styled.div``
 
 export default Modal

@@ -14,7 +14,9 @@ const PageHeader = () => {
         {renderBackButton()}
         {renderButtons(leftHeaderButtons)}
       </div>
-      {title}
+      <div className='title-wrapper'>
+        <span className='title'>{title}</span>
+      </div>
       <div className='buttons-block'>
         {renderButtons(rightHeaderButtons)}
       </div>

@@ -30,9 +30,12 @@
       "react-app"
     ],
     "rules": {
-      "max-len": ["error", {
-        "code": 120
-      }],
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
       "arrow-parens": [
         "error",
         "as-needed",
