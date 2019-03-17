@@ -1,23 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Toggle from '../components/Toggle'
+import Localized from '../components/Localized'
 import LoadingIndicator from '../components/LoadingIndicator'
 
 const SecondPage = () => {
   return (
     <div>
       <Link to='/third'>Next</Link>
-      <Toggle>
-        {({ isOpen, toggle }) => (
-          <div>
-            <button onClick={toggle}>Toggle message</button>
-            {isOpen && <h2>Hui</h2>}
-          </div>
-        )}
-      </Toggle>
-      <LoadingIndicator icon='hourglass' />
+      <Toggle>{renderToggle}</Toggle>
+      <Localized string='loadingIndicator.loading' render={localizedString => (
+        <LoadingIndicator icon='hourglass' alt={localizedString} />
+      )} />
     </div>
   )
+
+  function renderToggle({ isOpen, toggle }) {
+    return (
+      <div>
+        <button onClick={toggle}>Toggle message</button>
+        {isOpen && <h2>Hui</h2>}
+      </div>
+    )
+  }
 }
 
 export default SecondPage
