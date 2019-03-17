@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import PropTypes from 'prop-types'
 import LocalizationContext from '../contexts/LocalizationContext'
 
-const Localized = ({ stringPath, render }) => {
+const Localizer = ({ stringPath, render }) => {
   const { getlocalizedStringAtPath } = useContext(LocalizationContext)
   const localizedString = getlocalizedStringAtPath(stringPath)
 
@@ -13,9 +13,9 @@ const Localized = ({ stringPath, render }) => {
   )
 }
 
-Localized.propTypes = {
+Localizer.propTypes = {
   children: PropTypes.node,
   render: PropTypes.func
 }
 
-export default Localized
+export default Localizer

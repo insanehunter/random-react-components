@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useTitle from '../hooks/useTitle'
 import Modal from '../components/Modal'
 import Toggle from '../components/Toggle'
-import Localized from '../components/Localized'
+import Localizer from '../components/Localizer'
 import LocalizationSwitcher from '../components/LocalizationSwitcher'
 
 const MainPage = () => {
@@ -11,7 +11,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <h2><Localized stringPath='appHeader.defaultBackButtonText' /></h2>
+      <h2><Localizer stringPath='appHeader.defaultBackButtonText' /></h2>
       <Link to='/second'>Next</Link>
       <Toggle>
         {({ isOpen, toggle }) => (

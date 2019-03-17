@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import Localized from './Localized'
+import Localizer from './Localizer'
 import BackButton from './BackButton'
 import useHistory from '../hooks/useHistory'
 import AppStateContext, { PUSH_TITLE_TO_HISTORY, POP_LAST_SAVED_TITLE } from '../contexts/AppStateContext'
@@ -34,7 +34,7 @@ const PageHeader = () => {
     const backButtonText = hasHistory && visitedPages[visitedPages.length - 1]
     return hasHistory && (
       <BackButton handleClick={history.goBack} className='back-button'>
-        {backButtonText || <Localized stringPath='appHeader.defaultBackButtonText' />}
+        {backButtonText || <Localizer stringPath='appHeader.defaultBackButtonText' />}
       </BackButton>
     )
   }
