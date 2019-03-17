@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
+import Localized from './Localized'
 import BackButton from './BackButton'
 import useHistory from '../hooks/useHistory'
-import AppStateContext, { PUSH_TITLE_TO_HISTORY, POP_LAST_SAVED_TITLE } from '../context/AppStateContext'
+import AppStateContext, { PUSH_TITLE_TO_HISTORY, POP_LAST_SAVED_TITLE } from '../contexts/AppStateContext'
 
 const PageHeader = () => {
   const history = useHistory(handleHistoryChange)
@@ -30,9 +31,12 @@ const PageHeader = () => {
 
   function renderBackButton() {
     const hasHistory = !!visitedPages.length
-    const defaultBackButtonText = 'Back'
-    const backButtonText = hasHistory && (visitedPages[visitedPages.length - 1] || defaultBackButtonText)
-    return hasHistory && <BackButton handleClick={history.goBack} className='back-button'>{backButtonText}</BackButton>
+    const backButtonText = hasHistory && visitedPages[visitedPages.length - 1]
+    return hasHistory && (
+      <BackButton handleClick={history.goBack} className='back-button'>
+        {backButtonText || <Localized string='appHeader.defaultBackButtonText' />}
+      </BackButton>
+    )
   }
 
   function renderButtons(components) {

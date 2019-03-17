@@ -7,7 +7,7 @@ const Toggle = ({ children }) => {
 }
 
 Toggle.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.func
 }
 
 export default Toggle

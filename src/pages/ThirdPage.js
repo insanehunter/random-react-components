@@ -5,15 +5,15 @@ import useInitialData from '../hooks/useInitialData'
 
 const ThirdPage = () => {
   useTitle('Third')
-  const [data, , reload] = useInitialData('https://api.weather.gov/gridpoints/TOP/31,80')
+  const [data] = useInitialData('https://api.weather.gov/gridpoints/TOP/31,80')
 
   return (
     <div>
       <Link to='/'>Next</Link>
+      <br /><br />
       <div>
-        <button onClick={reload}>reload</button>
+        {data && JSON.stringify(data)}
       </div>
-      {JSON.stringify(data)}
     </div>
   )
 }

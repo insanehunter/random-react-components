@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import AppStateContext, { SET_TITLE } from '../context/AppStateContext'
+import AppStateContext, { SET_TITLE } from '../contexts/AppStateContext'
 
 const useTitle = (title) => {
   const defaultDocumentTitle = 'Connect Club 👋'

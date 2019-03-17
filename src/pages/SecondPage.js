@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Toggle from '../components/Toggle'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 const SecondPage = () => {
   return (
@@ -14,6 +15,7 @@ const SecondPage = () => {
           </div>
         )}
       </Toggle>
+      <LoadingIndicator icon='hourglass' />
     </div>
   )
 }
