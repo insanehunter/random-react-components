@@ -18,6 +18,14 @@ class MemoizedLocalizedStrings extends LocalizedStrings {
     return super.getLanguage()
   }
 
+  get nextLanguage() {
+    const currentLanguage = super.getLanguage()
+    const availableLanguages = super.getAvailableLanguages()
+    const currentLanguageIndex = availableLanguages.indexOf(currentLanguage)
+    const nextLanguageIndex = availableLanguages.length > currentLanguageIndex + 1 ? currentLanguageIndex + 1 : 0
+    return availableLanguages[nextLanguageIndex]
+  }
+
   set language(preferredLanguage) {
     const deviceLanguage = super.getInterfaceLanguage()
     const availableLanguages = super.getAvailableLanguages()

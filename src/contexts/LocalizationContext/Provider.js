@@ -4,14 +4,8 @@ import l10n from '../../services/localization'
 import getObjectValueAtPath from '../../helpers/getObjectValueAtPath'
 
 const LocalizationProvider = ({ children }) => {
-  const [currentLanguage, setLanguage] = useState(l10n.currentLanguage)
-
-  const nextLanguage = (() => {
-    const availableLanguages = l10n.availableLanguages
-    const currentLanguageIndex = availableLanguages.indexOf(currentLanguage)
-    const nextLanguageIndex = availableLanguages.length > currentLanguageIndex + 1 ? currentLanguageIndex + 1 : 0
-    return availableLanguages[nextLanguageIndex]
-  })()
+  const [, setLanguage] = useState(l10n.currentLanguage)
+  const nextLanguage = l10n.nextLanguage
 
   function toggleLanguage() {
     l10n.language = nextLanguage
