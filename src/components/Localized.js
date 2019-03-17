@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import PropTypes from 'prop-types'
 import LocalizationContext from '../contexts/LocalizationContext'
 
-const Localized = ({ string, render }) => {
-  const { localizeString } = useContext(LocalizationContext)
-  const localizedString = localizeString(string)
+const Localized = ({ stringPath, render }) => {
+  const { getlocalizedStringAtPath } = useContext(LocalizationContext)
+  const localizedString = getlocalizedStringAtPath(stringPath)
 
   return (
     render && render instanceof Function

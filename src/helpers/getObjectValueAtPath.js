@@ -1,4 +1,4 @@
-function getObjectValueAtPath(object, path, defaultValue) {
+function getObjectValueAtPath(object, path, defaultValue = null) {
   const result = object == null ? undefined : baseGet(object, path)
   return result === undefined ? defaultValue : result
 }

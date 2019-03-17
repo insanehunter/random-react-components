@@ -18,12 +18,12 @@ const LocalizationProvider = ({ children }) => {
     setLanguage(nextLanguage)
   }
 
-  function localizeString(stringPath) {
-    return getObjectValueAtPath(l10n, stringPath)
+  function getlocalizedStringAtPath(path) {
+    return getObjectValueAtPath(l10n, path)
   }
 
   return (
-    <LocalizationContext.Provider value={{ nextLanguage, toggleLanguage, localizeString }}>
+    <LocalizationContext.Provider value={{ nextLanguage, toggleLanguage, getlocalizedStringAtPath }}>
       {children}
     </LocalizationContext.Provider>
   )

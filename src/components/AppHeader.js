@@ -34,7 +34,7 @@ const PageHeader = () => {
     const backButtonText = hasHistory && visitedPages[visitedPages.length - 1]
     return hasHistory && (
       <BackButton handleClick={history.goBack} className='back-button'>
-        {backButtonText || <Localized string='appHeader.defaultBackButtonText' />}
+        {backButtonText || <Localized stringPath='appHeader.defaultBackButtonText' />}
       </BackButton>
     )
   }

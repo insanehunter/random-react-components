@@ -11,7 +11,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <h2><Localized string='appHeader.defaultBackButtonText' /></h2>
+      <h2><Localized stringPath='appHeader.defaultBackButtonText' /></h2>
       <Link to='/second'>Next</Link>
       <Toggle>
         {({ isOpen, toggle }) => (
