@@ -5,16 +5,11 @@ import LocalizationContext from '../contexts/LocalizationContext'
 const Localizer = ({ stringPath, render }) => {
   const { getlocalizedStringAtPath } = useContext(LocalizationContext)
   const localizedString = getlocalizedStringAtPath(stringPath)
-
-  return (
-    render && render instanceof Function
-      ? render(localizedString)
-      : localizedString
-  )
+  return render ? render(localizedString) : localizedString
 }
 
 Localizer.propTypes = {
-  children: PropTypes.node,
+  stringPath: PropTypes.string,
   render: PropTypes.func
 }
 
