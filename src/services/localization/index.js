@@ -2,6 +2,7 @@ import LocalizedStrings from 'react-localization'
 import en from './en'
 import ru from './ru'
 
+import getNextInArray from '../../helpers/getNextInArray'
 import getStorageDriver from '../../helpers/getStorageDriver'
 
 class MemoizedLocalizedStrings extends LocalizedStrings {
@@ -22,9 +23,7 @@ class MemoizedLocalizedStrings extends LocalizedStrings {
   get nextLanguage() {
     const currentLanguage = super.getLanguage()
     const availableLanguages = super.getAvailableLanguages()
-    const currentLanguageIndex = availableLanguages.indexOf(currentLanguage)
-    const nextLanguageIndex = availableLanguages.length > currentLanguageIndex + 1 ? currentLanguageIndex + 1 : 0
-    return availableLanguages[nextLanguageIndex]
+    return getNextInArray(availableLanguages, currentLanguage)
   }
 
   set language(preferredLanguage) {

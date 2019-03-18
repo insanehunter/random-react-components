@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import ThemeContext from '../contexts/ThemeContext'
 
 const ThemeSwitcher = ({ className = '' }) => {
-  const { toggleTheme, selectedTheme } = useContext(ThemeContext)
+  const { switchTheme, selectedTheme } = useContext(ThemeContext)
 
   return (
-    <StyledSwitcher onClick={toggleTheme} className={className}>
+    <StyledSwitcher onClick={switchTheme} className={className}>
       {selectedTheme === 'light' ? '🌒' : '☀️'}
     </StyledSwitcher>
   )

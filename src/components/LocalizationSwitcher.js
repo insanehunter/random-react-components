@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import LocalizationContext from '../contexts/LocalizationContext'
 
 const LocalizationSwitcher = () => {
-  const { nextLanguage, toggleLanguage } = useContext(LocalizationContext)
+  const { nextLanguage, switchLanguage } = useContext(LocalizationContext)
 
   return (
-    <StyledSwitcher onClick={toggleLanguage}>
+    <StyledSwitcher onClick={switchLanguage}>
       {nextLanguage}
     </StyledSwitcher>
   )

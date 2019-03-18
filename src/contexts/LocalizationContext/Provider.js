@@ -8,7 +8,7 @@ const LocalizationProvider = ({ children }) => {
   const [, setLanguage] = useState(l10n.currentLanguage)
   const nextLanguage = l10n.nextLanguage
 
-  function toggleLanguage() {
+  function switchLanguage() {
     l10n.language = nextLanguage
     setLanguage(nextLanguage)
   }
@@ -18,7 +18,7 @@ const LocalizationProvider = ({ children }) => {
   }
 
   return (
-    <LocalizationContext.Provider value={{ nextLanguage, toggleLanguage, getlocalizedStringAtPath }}>
+    <LocalizationContext.Provider value={{ nextLanguage, switchLanguage, getlocalizedStringAtPath }}>
       {children}
     </LocalizationContext.Provider>
   )
