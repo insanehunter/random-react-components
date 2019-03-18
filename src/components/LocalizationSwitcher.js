@@ -6,12 +6,12 @@ const LocalizationSwitcher = () => {
   const { nextLanguage, toggleLanguage } = useContext(LocalizationContext)
 
   return (
-    <StyledButton onClick={toggleLanguage}>
+    <StyledSwitcher onClick={toggleLanguage}>
       {nextLanguage}
-    </StyledButton>
+    </StyledSwitcher>
   )
 }
 
-const StyledButton = styled.button``
+const StyledSwitcher = styled.button``
 
 export default LocalizationSwitcher

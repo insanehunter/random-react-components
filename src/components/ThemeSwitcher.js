@@ -7,9 +7,9 @@ const ThemeSwitcher = ({ className = '' }) => {
   const { toggleTheme, selectedTheme } = useContext(ThemeContext)
 
   return (
-    <StyledButton onClick={toggleTheme} className={className}>
+    <StyledSwitcher onClick={toggleTheme} className={className}>
       {selectedTheme === 'light' ? '🌒' : '☀️'}
-    </StyledButton>
+    </StyledSwitcher>
   )
 }
 
@@ -17,6 +17,6 @@ ThemeSwitcher.propTypes = {
   className: PropTypes.string
 }
 
-const StyledButton = styled.button``
+const StyledSwitcher = styled.button``
 
 export default ThemeSwitcher
