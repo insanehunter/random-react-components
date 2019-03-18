@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import useTitle from '../hooks/useTitle'
 import useInitialData from '../hooks/useInitialData'
+import Avatar from '../components/Avatar'
 
 const ThirdPage = () => {
   useTitle('Third')
@@ -11,6 +12,7 @@ const ThirdPage = () => {
     <div>
       <Link to='/'>Next</Link>
       <br /><br />
+      <Avatar />
       <div>
         {data && JSON.stringify(data)}
       </div>
