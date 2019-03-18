@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SearchField from './SearchField'
 import Tag from './Tag'
-import appendClassNames from '../helpers/appendClassNames'
 
 const TagChooser = ({
   dataSet,
@@ -30,10 +29,7 @@ const TagChooser = ({
 
   function renderTags() {
     return visibleItems.map(item => (
-      <Tag
-        onClick={() => onSelect(item)}
-        className={appendClassNames('tag', selectedItems.includes(item) && 'selected')}
-      >
+      <Tag onClick={() => onSelect(item)} isSelected={selectedItems.includes(item)}>
         item[tagLabelSelector]
       </Tag>
     ))
