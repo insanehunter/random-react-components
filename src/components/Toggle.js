@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const Toggle = ({ children }) => {
-  const [isOpen, setOpen] = useState(false)
+const Toggle = ({ children, isOpenByDefault = false }) => {
+  const [isOpen, setOpen] = useState(isOpenByDefault)
   return children({ isOpen, toggle: () => setOpen(status => !status) })
 }
 
