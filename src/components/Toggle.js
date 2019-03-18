@@ -7,7 +7,8 @@ const Toggle = ({ children, isOpenByDefault = false }) => {
 }
 
 Toggle.propTypes = {
-  children: PropTypes.func
+  children: PropTypes.func,
+  isOpenByDefault: PropTypes.bool
 }
 
 export default Toggle

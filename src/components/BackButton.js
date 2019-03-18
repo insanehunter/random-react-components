@@ -9,8 +9,8 @@ const BackButton = ({ handleClick, children, className = '' }) => (
 )
 
 BackButton.propTypes = {
-  children: PropTypes.node,
   handleClick: PropTypes.func,
+  children: PropTypes.node,
   className: PropTypes.string
 }
 

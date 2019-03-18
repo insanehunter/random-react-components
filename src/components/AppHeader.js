@@ -5,7 +5,7 @@ import BackButton from './BackButton'
 import useHistory from '../hooks/useHistory'
 import AppStateContext, { PUSH_TITLE_TO_HISTORY, POP_LAST_SAVED_TITLE } from '../contexts/AppStateContext'
 
-const PageHeader = () => {
+const AppHeader = () => {
   const history = useHistory(handleHistoryChange)
   const { title, visitedPages, leftHeaderButtons, rightHeaderButtons, dispatch } = useContext(AppStateContext)
 
@@ -46,4 +46,4 @@ const PageHeader = () => {
 
 const StyledHeader = styled.header``
 
-export default PageHeader
+export default AppHeader
