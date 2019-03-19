@@ -33,7 +33,7 @@ const AppHeader = () => {
     const hasHistory = !!visitedPages.length
     const backButtonText = hasHistory && visitedPages[visitedPages.length - 1]
     return hasHistory && (
-      <BackButton handleClick={history.goBack} className='back-button'>
+      <BackButton onClick={history.goBack} className='back-button'>
         {backButtonText || <Localizer stringPath='appHeader.defaultBackButtonText' />}
       </BackButton>
     )

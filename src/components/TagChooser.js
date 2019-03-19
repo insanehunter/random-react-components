@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SearchField from './SearchField'
@@ -6,54 +6,66 @@ import Tag from './Tag'
 
 const TagChooser = ({
   dataSet,
-  selectedItems,
   onSelect,
+  selectedItems = [],
   tagLabelSelector = 'title',
   renderLimit = 10,
+  onSearch = () => {},
   className = ''
 }) => {
-  const [visibleItems, setVisibleItems] = useState(getDefaultStateData())
+  const [searchString, setSearchString] = useState('')
+  const visibleData = useMemo(() => getVisibleData(), [dataSet, searchString])
 
   return (
-    <StyledChooser>
-      <SearchField onChange={filterTags} />
+    <StyledChooser className={className}>
+      <SearchField onChange={handleSearch} className='search-field' />
       <div className='tags-container'>
         {renderTags()}
       </div>
     </StyledChooser>
   )
 
-  function getDefaultStateData() {
-    return dataSet.slice(0, renderLimit)
+  function handleSearch(searchString) {
+    const processedString = searchString.trim().toLowerCase()
+    setSearchString(processedString)
+    onSearch(processedString)
   }
 
   function renderTags() {
-    return visibleItems.map(item => (
-      <Tag onClick={() => onSelect(item)} isSelected={selectedItems.includes(item)}>
-        item[tagLabelSelector]
+    return visibleData.map((item, index) => (
+      <Tag key={index} onClick={() => onSelect(item)} isSelected={selectedItems.includes(item)}>
+        {item[tagLabelSelector]}
       </Tag>
     ))
   }
 
-  function filterTags(searchString) {
-    if (!searchString) setVisibleItems(getDefaultStateData())
+  function getVisibleData() {
+    if (!searchString) return getTopData(dataSet)
 
-    searchString = searchString.toLowerCase()
     const regExp = new RegExp(`\\b${searchString}`)
-    const filteredItems = dataSet.filter(item => regExp.test(item[tagLabelSelector].toLowerCase()))
-    setVisibleItems(filteredItems.slice(0, renderLimit))
+    const filteredDataSet = dataSet.filter(item => regExp.test(item[tagLabelSelector].toLowerCase()))
+    return getTopData(filteredDataSet)
+  }
+
+  function getTopData(data) {
+    return data
+      .slice(0, renderLimit)
+      .sort((a, b) => {
+        return a[tagLabelSelector] > b[tagLabelSelector] ? 1 : -1
+      })
   }
 }
 
 TagChooser.propTypes = {
   dataSet: PropTypes.array,
-  selectedItems: PropTypes.array,
   onSelect: PropTypes.func,
+  selectedItems: PropTypes.array,
   tagLabelSelector: PropTypes.string,
   renderLimit: PropTypes.number,
+  onSearch: PropTypes.func,
   className: PropTypes.string
 }
 
-const StyledChooser = styled.button``
+const StyledChooser = styled.div``
 
 export default TagChooser
