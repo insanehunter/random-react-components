@@ -9,9 +9,9 @@ const SecondPage = () => {
     <div>
       <Link to='/third'>Next</Link>
       <Toggle isOpenByDefault={true}>{renderToggle}</Toggle>
-      <Localizer stringPath='loadingIndicator.loading' render={localizedString => (
-        <LoadingIndicator icon='hourglass' alt={localizedString} />
-      )} />
+      <Localizer stringPath='loadingIndicator.loading'>
+        {localizedString => <LoadingIndicator icon='hourglass' alt={localizedString} />}
+      </Localizer>
     </div>
   )
 
