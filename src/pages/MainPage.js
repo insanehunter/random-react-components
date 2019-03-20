@@ -23,7 +23,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <TagChooser dataSet={testData} onSearch={testSearch} />
+      <TagChooser tags={testData} onSearch={testSearch} />
       <StyledTitle>
         <Localizer stringPath='appHeader.defaultBackButtonText' />
       </StyledTitle>
