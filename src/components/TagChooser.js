@@ -1,20 +1,25 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SearchField from './SearchField'
 import Tag from './Tag'
 
 const TagChooser = ({
-  dataSet,
+  tags,
   onSelect,
-  selectedItems = [],
+  selectedTags = [],
   tagLabelSelector = 'title',
   renderLimit = 10,
   onSearch = () => {},
   className = ''
 }) => {
-  const [searchString, setSearchString] = useState('')
-  const visibleData = useMemo(() => getVisibleData(), [dataSet, searchString])
+  const [visibleTags, setVisibleTags] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
+
+  useEffect(() => {
+    const filteredTags = getTagsFilteredBySearchQuery(searchQuery)
+    setVisibleTags(filteredTags)
+  }, [tags])
 
   return (
     <StyledChooser className={className}>
@@ -25,41 +30,42 @@ const TagChooser = ({
     </StyledChooser>
   )
 
-  function handleSearch(searchString) {
-    const processedString = searchString.trim().toLowerCase()
-    setSearchString(processedString)
-    onSearch(processedString)
-  }
-
   function renderTags() {
-    return visibleData.map((item, index) => (
-      <Tag key={index} onClick={() => onSelect(item)} isSelected={selectedItems.includes(item)}>
+    return visibleTags.map((item, index) => (
+      <Tag key={index} onClick={() => onSelect(item)} isSelected={selectedTags.includes(item)}>
         {item[tagLabelSelector]}
       </Tag>
     ))
   }
 
-  function getVisibleData() {
-    if (!searchString) return getTopData(dataSet)
+  function handleSearch(inputValue) {
+    const processedQuery = inputValue.trim().toLowerCase()
+    const searchResult = getTagsFilteredBySearchQuery(processedQuery)
 
-    const regExp = new RegExp(`\\b${searchString}`)
-    const filteredDataSet = dataSet.filter(item => regExp.test(item[tagLabelSelector].toLowerCase()))
-    return getTopData(filteredDataSet)
+    setVisibleTags(searchResult)
+    setSearchQuery(processedQuery)
+    onSearch(processedQuery, searchResult)
   }
 
-  function getTopData(data) {
-    return data
+  function getTagsFilteredBySearchQuery(query) {
+    if (!query) return sliceAndSort(tags)
+
+    const regExp = new RegExp(`\\b${query}`)
+    const filteredTags = tags.filter(item => regExp.test(item[tagLabelSelector].toLowerCase()))
+    return sliceAndSort(filteredTags)
+  }
+
+  function sliceAndSort(tagsCollection) {
+    return tagsCollection
       .slice(0, renderLimit)
-      .sort((a, b) => {
-        return a[tagLabelSelector] > b[tagLabelSelector] ? 1 : -1
-      })
+      .sort((a, b) => a[tagLabelSelector] > b[tagLabelSelector] ? 1 : -1)
   }
 }
 
 TagChooser.propTypes = {
-  dataSet: PropTypes.array,
+  tags: PropTypes.array,
   onSelect: PropTypes.func,
-  selectedItems: PropTypes.array,
+  selectedTags: PropTypes.array,
   tagLabelSelector: PropTypes.string,
   renderLimit: PropTypes.number,
   onSearch: PropTypes.func,

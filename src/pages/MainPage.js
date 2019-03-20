@@ -43,7 +43,7 @@ const MainPage = () => {
     </div>
   )
 
-  function testSearch(string) {
+  function testSearch(string, result) {
     setTimeout(() => {
       setTestData(testData.concat([{ title: 'hui3' }, { title: 'hui4' }]))
     }, 1500)
