@@ -55,8 +55,8 @@ const TagChooser = ({
     return sliceAndSort(filteredTags)
   }
 
-  function sliceAndSort(tagsCollection) {
-    return tagsCollection
+  function sliceAndSort(tagsList) {
+    return tagsList
       .slice(0, renderLimit)
       .sort((a, b) => a[tagLabelSelector] > b[tagLabelSelector] ? 1 : -1)
   }

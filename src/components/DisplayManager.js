@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 
-const DisplayManager = ({ visible, children }) => {
-  return visible ? children : null
+const DisplayManager = ({ children, visible = true, hidden = false }) => {
+  return hidden ? null : visible ? children : null
 }
 
 DisplayManager.propTypes = {
+  children: PropTypes.node,
   visible: PropTypes.bool,
-  children: PropTypes.node
+  hidden: PropTypes.bool
 }
 
 export default DisplayManager
