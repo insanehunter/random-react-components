@@ -1,4 +1,7 @@
 export default {
+  mainPage: {
+    title: 'Заголовок на русском'
+  },
   appHeader: {
     defaultBackButtonText: 'Назад'
   },

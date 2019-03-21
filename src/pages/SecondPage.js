@@ -21,7 +21,7 @@ const SecondPage = () => {
       <div>
         <button onClick={toggle}>Toggle message</button>
         <VisibilityManager visible={isOpen}>
-          <h2>Hui</h2>
+          <h2>Хоба!</h2>
         </VisibilityManager>
       </div>
     )

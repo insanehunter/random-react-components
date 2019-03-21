@@ -23,7 +23,7 @@ const TagChooser = ({
 
   return (
     <StyledChooser className={className}>
-      <SearchField onChange={handleSearch} className='search-field' />
+      <SearchField onChange={handleSearch} placeholder='Search tag' className='search-field' />
       <div className='tags-container'>
         {renderTags()}
       </div>

@@ -29,9 +29,7 @@ const CompositedProviders = ({ children }) => (
     <LocalizationProvider>
       <DynamicThemeProvider>
         <Router history={history}>
-          <React.Fragment>
-            {children}
-          </React.Fragment>
+          {children}
         </Router>
       </DynamicThemeProvider>
     </LocalizationProvider>

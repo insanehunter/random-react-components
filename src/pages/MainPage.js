@@ -7,34 +7,39 @@ import Toggle from '../components/Toggle'
 import Localizer from '../components/Localizer'
 import TagChooser from '../components/TagChooser'
 import ThemeSwitcher from '../components/ThemeSwitcher'
+import VisibilityManager from '../components/VisibilityManager'
 import LocalizationSwitcher from '../components/LocalizationSwitcher'
 
 const MainPage = () => {
   useTitle('Main')
-  const testArray = []
   const [testData, setTestData] = useState([
-    { title: 'hui1' },
-    { title: 'hui2' },
-    { title: 'jopa1' },
-    { title: 'jopa2' },
-    { title: 'jopa3' },
-    { title: 'zolupa konskaya1' }
+    { title: 'tag1' },
+    { title: 'tag2' },
+    { title: 'item1' },
+    { title: 'item2' },
+    { title: 'next tag1' },
+    { title: 'next tag2' }
   ])
 
   return (
     <div>
-      <TagChooser tags={testData} onSearch={testSearch} />
-      <StyledTitle>
-        <Localizer stringPath='appHeader.defaultBackButtonText' />
-      </StyledTitle>
+      <TagChooser tags={testData} onSelect={tag => alert(tag.title)} onSearch={testSearch} />
 
       <Link to='/second'>Next</Link>
+
+      <StyledTitle>
+        <Localizer stringPath='mainPage.title' />
+      </StyledTitle>
 
       <Toggle>
         {({ isOpen, toggle }) => (
           <div>
-            <button onClick={toggle}>Show modal</button>
-            {isOpen && <Modal close={toggle}><h1>Hui</h1></Modal>}
+            <button onClick={toggle}>Show popup</button>
+            <VisibilityManager visible={isOpen}>
+              <Modal>
+                <h2>Popup</h2>
+              </Modal>
+            </VisibilityManager>
           </div>
         )}
       </Toggle>
@@ -44,8 +49,10 @@ const MainPage = () => {
   )
 
   function testSearch(string, result) {
+    if (testData.length > 6) return
+
     setTimeout(() => {
-      setTestData(testData.concat([{ title: 'hui3' }, { title: 'hui4' }]))
+      setTestData(testData.concat([{ title: 'another item1' }, { title: 'next tag3' }]))
     }, 1500)
   }
 }
